@@ -11,10 +11,10 @@ jobs:
          - checkout
          - run: echo "A first hello"
          - run: mkdir -p my_workspace
-         - run: echo "Trying out workspace" > my_workspace/echo-output
+         - run: echo "Trying out workspaces" > my_workspace/echo-output
          - persist_to_workspace:
              root: my_workspace
-             paths: 
+             paths:
                - echo-output
   two:
     docker:
@@ -24,22 +24,22 @@ jobs:
           password: $DOCKERHUB_PASSWORD
         
     steps:
-      - checkout
-      - run: echo "A more familiar h1"
-      - attach_workspace:
-          at: my_workspace
-      - run:
-          if [[ $(cat my_workspace/echo-output) == "Trying out workspace" ]]; then
-            echo "It worked!";
-          else
-            echo "Nope!"; exit 1
-          fi         
+         - checkout
+         - run: echo "A more familiar h1"
+         - attach_workspace:
+             at: my_workspace
+         - run: |
+             if [[ $(cat my_workspace/echo-output) == "Trying out workspaces" ]]; then
+               echo "It worked!";
+             else
+               echo "Nope!"; exit 1
+             fi
 workflows:
   version: 2
   one_and_two:
     jobs:
       - one
-      - two: 
+      - two:
           requires:
             - one
 
