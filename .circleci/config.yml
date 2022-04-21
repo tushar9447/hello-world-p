@@ -5,7 +5,7 @@ jobd:
        -image: cimg/ruby:2.6.8
         auth:
           username: mydockerhub-user
-          password: $DOCKERHUB_PASSWOD
+          password: $DOCKERHUB_PASSWORD
 
 steps:
    -checkout
@@ -16,11 +16,11 @@ two:
      -image: cimg/ruby:3.0.2
       auth:
         username: mydockerhub-user
-        password: $DOCKERHUB_PASSWOD
-    steps:
-       -checkout
-       - run: echo "A more familiar hi"
-       - run: sleep 15
+        password: $DOCKERHUB_PASSWORD
+  steps:
+     -checkout
+     - run: echo "A more familiar hi"
+     - run: sleep 15
        
 workflows:
     version: 2
