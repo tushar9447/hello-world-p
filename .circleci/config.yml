@@ -24,16 +24,16 @@ jobs:
           password: $DOCKERHUB_PASSWORD
         
     steps:
-         - checkout
-         - run: echo "A more familiar h1"
-         - attach_workspace:
-             at: my_workspace:
-         - run:
-             if [[ $(cat my_workspace/echo-output) == "Trying out workspace" ]]; then
-               echo "It worked!";
-             else
-               echo "Nope!"; exit 1
-             fi
+      - checkout
+      - run: echo "A more familiar h1"
+      - attach_workspace:
+        at: my_workspace
+      - run:
+         if [[ $(cat my_workspace/echo-output) == "Trying out workspace" ]]; then
+           echo "It worked!";
+         else
+           echo "Nope!"; exit 1
+         fi
          
 workflows:
   version: 2
