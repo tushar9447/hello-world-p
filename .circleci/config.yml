@@ -27,7 +27,7 @@ jobs:
       - checkout
       - run: echo "A more familiar h1"
       - attach_workspace:
-        at: my_workspace
+        at: my_workspace:
       - run:
          if [[ $(cat my_workspace/echo-output) == "Trying out workspace" ]]; then
            echo "It worked!";
